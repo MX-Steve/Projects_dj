@@ -27,10 +27,10 @@ class GenerateGRPCStub(Command):
         args = (['', '-I', path.join(idl_dir, 'schemas/server'),
                      f'--python_out={output_dir}',
                      f'--grpc_python_out={output_dir}',
-                     path.join(idl_dir, 'schemas/server/xxx.proto')])
+                     path.join(idl_dir, 'schemas/server/djentry.proto')])
         protoc.main(args)
         GenerateGRPCStub.patch_grpc_import_path(
-            path.join(output_dir, 'xxx_pb2_grpc.py'))
+            path.join(output_dir, 'djentry_pb2_grpc.py'))
 
     @staticmethod
     def patch_grpc_import_path(fn):
@@ -38,7 +38,7 @@ class GenerateGRPCStub(Command):
         with open(fn, 'rb') as f:
             data = f.read().decode('utf-8')
         patched = data.replace(
-            'import xxx_pb2 as xxx__pb2', 'from . import xxx_pb2 as xxx__pb2')
+            'import djentry_pb2 as djentry__pb2', 'from . import djentry_pb2 as djentry__pb2')
         with open(fn, 'wb') as f:
             f.write(patched.encode('utf-8'))
 
@@ -48,7 +48,7 @@ install_requirements = ['setuptools', 'Django==3.2.7',
 
 dev_requirements = ['pylint', 'mock', 'pylint-django']
 
-setup(name='xxx',
+setup(name='djentry',
       install_requires=install_requirements,
       extras_require={'dev': dev_requirements},
       cmdclass={'gen_grpc': GenerateGRPCStub},

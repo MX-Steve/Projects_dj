@@ -1,7 +1,7 @@
 [MASTER]
 ignore-paths=.*/migrations/.*, .*_pb2(_grpc)?\.py
 load-plugins=pylint_django
-django-settings-module=xxx.settings
+django-settings-module=djentry.settings
 
 [MESSAGES CONTROL]
 disable=raw-checker-failed,

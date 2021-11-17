@@ -1,7 +1,7 @@
 # pylint: disable=wildcard-import,unused-wildcard-import
 from os import environ
 from pathlib import Path
-from xxx.settings.common import *
+from djentry.settings.common import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +17,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xxx',
+        'NAME': 'self',
         'HOST':"127.0.0.1",
         'PORT':3306,
         'USER':"root",
