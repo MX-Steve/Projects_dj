@@ -1,6 +1,6 @@
 # Developing in local environment
 
-You can develop fleets on your local machine. First you need to set up a Python 3
+You can develop xxx on your local machine. First you need to set up a Python 3
 virtual environment and install the required dependency: 
 
 ```
@@ -12,7 +12,7 @@ $ pip3 install -r requirements.txt
 You can start the web server using the following command:
 
 ```
-export DJANGO_SETTINGS_MODULE=fleets.settings.development
+export DJANGO_SETTINGS_MODULE=xxx.settings.development
 export DJANGO_SECRET_KEY=<some secret key>
 python manage.py runserver
 ```

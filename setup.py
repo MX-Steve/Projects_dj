@@ -48,7 +48,7 @@ install_requirements = ['setuptools', 'Django==3.2.7',
 
 dev_requirements = ['pylint', 'mock', 'pylint-django']
 
-setup(name='fleet',
+setup(name='xxx',
       install_requires=install_requirements,
       extras_require={'dev': dev_requirements},
       cmdclass={'gen_grpc': GenerateGRPCStub},
