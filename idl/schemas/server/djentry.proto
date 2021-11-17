@@ -10,6 +10,6 @@ message UserInfoResponse {
 	string msg = 1;
 }
 
-service XxxStatistics {
+service DjentryStatistics {
 	rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse);
 }
