@@ -5,6 +5,7 @@ cffi==1.15.0
 cryptography==35.0.0
 Django==3.2.7
 djangorestframework==3.12.4
+djangorestframework-jwt==1.11.0
 grpcio==1.41.0
 grpcio-tools==1.41.0
 isort==5.9.3

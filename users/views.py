@@ -1,8 +1,10 @@
+import logging
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_POST
+logger = logging.getLogger("app")
 
 
 @csrf_exempt
@@ -23,3 +25,9 @@ def login_view(req):
 def logout_view(req):
     logout(req)
     return redirect("/login")
+
+
+def test(req):
+    print(req)
+    logger.error("这是一个error日志")
+    return JsonResponse({"code": 200})

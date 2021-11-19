@@ -10,17 +10,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'self',
+        'NAME': 'clover',
         'HOST':"127.0.0.1",
         'PORT':3306,
         'USER':"root",
-        'PASSWORD':"yyyyyyy",
+        'PASSWORD':"kaituozhe520",
     }
 }
