@@ -18,9 +18,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'clover',
-        'HOST':"127.0.0.1",
-        'PORT':3306,
-        'USER':"root",
-        'PASSWORD':"kaituozhe520",
+        'HOST': "127.0.0.1",
+        'PORT': 3306,
+        'USER': "root",
+        'PASSWORD': "kaituozhe520",
     }
 }

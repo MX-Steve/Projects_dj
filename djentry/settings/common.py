@@ -39,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'utils.backAuthApiMiddleware.AuthApiMiddleware',
 ]
 
 ROOT_URLCONF = 'djentry.urls'
@@ -148,7 +149,7 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'JWT'
 }
 ADMINS = (
- ('admin_name','your@gmail.com'),
+    ('admin_name', 'mx_steve@163.com'),
 )
 MANAGERS = ADMINS
 LOG_DIR = os.path.join(BASE_DIR, "logs")
@@ -159,7 +160,8 @@ LOGGING = {
     'disable_existing_loggers': True,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] \
+                [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
         },
     },
     'filters': {
@@ -171,66 +173,66 @@ LOGGING = {
             'include_html': True,
         },
         'default': {
-            'level':'INFO',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR,'all.log'),
-            'maxBytes': 1024*1024*5, # 5 MB
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'all.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
         },
-        'console':{
+        'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'standard'
         },
         'request_handler': {
-            'level':'INFO',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR,'script.log'),
-            'maxBytes': 1024*1024*5, # 5 MB
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'script.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
         },
         'scprits_handler': {
-            'level':'INFO',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR,'script.log'),
-            'maxBytes': 1024*1024*5, # 5 MB
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'script.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
         },
         'out_handler': {
-                    'level':'INFO',
-                    'class':'logging.handlers.RotatingFileHandler',
-                    'filename': os.path.join(LOG_DIR,'out.log'),
-                    'maxBytes': 1024*1024*5, # 5 MB
-                    'backupCount': 5,
-                    'formatter':'standard',
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'out.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
         },
         'info': {
-                    'level':'INFO',
-                    'class':'logging.handlers.RotatingFileHandler',
-                    'filename': os.path.join(LOG_DIR,'out.log'),
-                    'maxBytes': 1024*1024*5, # 5 MB
-                    'backupCount': 5,
-                    'formatter':'standard',
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'out.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
         },
         'error': {
-                    'level':'INFO',
-                    'class':'logging.handlers.RotatingFileHandler',
-                    'filename': os.path.join(LOG_DIR,'error.log'),
-                    'maxBytes': 1024*1024*5, # 5 MB
-                    'backupCount': 5,
-                    'formatter':'standard',
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'error.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
         }
     },
     'loggers': {
         'django': {
-            'handlers': ['default','console'],
+            'handlers': ['default', 'console'],
             'level': 'INFO',
             'propagate': False
         },
-        'ttool.app':{
+        'ttool.app': {
             'handlers': ['error', 'info', 'console', 'default'],
             'level': 'INFO',
             'propagate': True
@@ -250,8 +252,8 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True
         },
-        'out.app':{
-            'handlers': ['out_handler','console'],
+        'out.app': {
+            'handlers': ['out_handler', 'console'],
             'level': 'INFO',
             'propagate': True
         }

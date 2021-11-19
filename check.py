@@ -6,13 +6,14 @@ from utils import baseview
 
 
 class check(baseview.AnyLogin):
+    "check the app status"
 
     def get(self, request, args=None):
         try:
             sql = "show tables;"
             cursor = connection.cursor()
             cursor.execute(sql)
-            data_set = cursor.fetchone()
+            cursor.fetchone()
             return Response({'isAlive': True})
         except Exception as e:
-            return HttpResponse(status=500)
+            return HttpResponse({"data": {}, "code": 500, "msg": e}, status=500)

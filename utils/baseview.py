@@ -2,7 +2,6 @@
 from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticated,
-    BasePermission
 )
 from rest_framework.views import APIView
 from rest_framework import serializers
@@ -18,6 +17,7 @@ class UserInfoSerializers(serializers.ModelSerializer):
 
 
 class BaseView(APIView):
+    "base view"
     permission_classes = (IsAuthenticated,)
     serializer_class = UserInfoSerializers
 
@@ -35,6 +35,7 @@ class BaseView(APIView):
 
 
 class SuperUserpermissions(APIView):
+    "super user permissions"
     permission_classes = (IsAdminUser,)
 
     def get(self, request, args):
@@ -51,6 +52,7 @@ class SuperUserpermissions(APIView):
 
 
 class AnyLogin(APIView):
+    "any login"
     permission_classes = ()
     authentication_classes = ()
 
