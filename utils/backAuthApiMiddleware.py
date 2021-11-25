@@ -11,8 +11,8 @@ class AuthApiMiddleware(MiddlewareMixin):
         try:
             path = request.path
             if '/admin' not in path \
-                    and '/auth/login/' not in path \
-                    and '/isAlive/' not in path \
+                    and '/v1/login' not in path \
+                    and '/isAlive' not in path \
                     and request.method != 'GET':
                 token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
                 try:

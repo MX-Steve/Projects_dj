@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
 from rest_framework.response import Response
+# pylint: disable=ungrouped-imports
 from django.db import connection
 from utils import baseview
 
@@ -15,5 +16,5 @@ class check(baseview.AnyLogin):
             cursor.execute(sql)
             cursor.fetchone()
             return Response({'isAlive': True})
-        except Exception as e:
+        except Exception as e: # pylint: disable=broad-except
             return HttpResponse({"data": {}, "code": 500, "msg": e}, status=500)

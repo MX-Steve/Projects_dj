@@ -155,107 +155,107 @@ MANAGERS = ADMINS
 LOG_DIR = os.path.join(BASE_DIR, "logs")
 
 # 基本配置，可以复用的
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] \
-                [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
-        },
-    },
-    'filters': {
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'include_html': True,
-        },
-        'default': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'all.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'standard'
-        },
-        'request_handler': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'script.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
-        'scprits_handler': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'script.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
-        'out_handler': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'out.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
-        'info': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'out.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
-        'error': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOG_DIR, 'error.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['default', 'console'],
-            'level': 'INFO',
-            'propagate': False
-        },
-        'ttool.app': {
-            'handlers': ['error', 'info', 'console', 'default'],
-            'level': 'INFO',
-            'propagate': True
-        },
-        'django.request': {
-            'handlers': ['request_handler'],
-            'level': 'INFO',
-            'propagate': False
-        },
-        'scripts': {
-            'handlers': ['scprits_handler'],
-            'level': 'INFO',
-            'propagate': False
-        },
-        'Yearning.core.views': {
-            'handlers': ['out_handler'],
-            'level': 'INFO',
-            'propagate': True
-        },
-        'out.app': {
-            'handlers': ['out_handler', 'console'],
-            'level': 'INFO',
-            'propagate': True
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': True,
+#     'formatters': {
+#         'standard': {
+#             'format': '%(asctime)s [%(threadName)s:%(thread)d] \
+#                 [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
+#         },
+#     },
+#     'filters': {
+#     },
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'class': 'django.utils.log.AdminEmailHandler',
+#             'include_html': True,
+#         },
+#         'default': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'all.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         },
+#         'console': {
+#             'level': 'INFO',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'standard'
+#         },
+#         'request_handler': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'script.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         },
+#         'scprits_handler': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'script.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         },
+#         'out_handler': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'out.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         },
+#         'info': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'out.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         },
+#         'error': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': os.path.join(LOG_DIR, 'error.log'),
+#             'maxBytes': 1024*1024*5,  # 5 MB
+#             'backupCount': 5,
+#             'formatter': 'standard',
+#         }
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['default', 'console'],
+#             'level': 'INFO',
+#             'propagate': False
+#         },
+#         'ttool.app': {
+#             'handlers': ['error', 'info', 'console', 'default'],
+#             'level': 'INFO',
+#             'propagate': True
+#         },
+#         'django.request': {
+#             'handlers': ['request_handler'],
+#             'level': 'INFO',
+#             'propagate': False
+#         },
+#         'scripts': {
+#             'handlers': ['scprits_handler'],
+#             'level': 'INFO',
+#             'propagate': False
+#         },
+#         'Yearning.core.views': {
+#             'handlers': ['out_handler'],
+#             'level': 'INFO',
+#             'propagate': True
+#         },
+#         'out.app': {
+#             'handlers': ['out_handler', 'console'],
+#             'level': 'INFO',
+#             'propagate': True
+#         }
+#     }
+# }
