@@ -3,14 +3,14 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework_jwt.utils import jwt_decode_handler
 from users.models import User
 
+Skip = True
+
 
 class AuthApiMiddleware(MiddlewareMixin):
     """auth api middleware"""
 
-    def __init__(self):
-        self.skip = True
-
     def process_request(self, request):  # pylint: disable=no-self-use
+        self.skip = Skip
         if self.skip:
             return None
         try:
@@ -44,4 +44,5 @@ class AuthApiMiddleware(MiddlewareMixin):
             return HttpResponse(status=500)
 
     def process_response(self, request, response):
+        print("in process_reponse",self.skip)
         return response
