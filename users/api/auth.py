@@ -35,14 +35,14 @@ class LoginView(baseview.AnyLogin):
         return JsonResponse({"code": 404, "data": {}, "msg": 'Unauthorized'})
 
 
-class UserInfoView(baseview.BaseView):
+class UserInfoView(baseview.AnyLogin):
     "user info view"
 
-    def post(self, request, args=None):
-        token = ""
-        authorization = request.META.get('HTTP_AUTH_KEY')
-        if authorization is not None:
-            token = authorization.split(' ')[1]
+    def get(self, request, args=None):
+        # authorization = request.META.get('HTTP_AUTH_KEY')
+        # if authorization is not None:
+        #     token = authorization.split(' ')[1]
+        token = request.GET.get("token")
         if token == "":
             return JsonResponse({"code": 404, "data": {}, "msg": 'need auth-key.'})
         user_dict = jwt_decode_handler(token=token)
