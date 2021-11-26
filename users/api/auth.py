@@ -51,7 +51,7 @@ class UserInfoView(baseview.BaseView):
             serializers = UserSerializers(user_obj, many=True)
             return JsonResponse({"code": 200,
                                  "data": {"user_info": serializers.data},
-                                 "msg": "get user info"})
+                                 "msg": "get user info success"})
         return JsonResponse({"code": 404, "data": {}, "msg": 'user not exist.'})
 
 
