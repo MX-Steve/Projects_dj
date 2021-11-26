@@ -10,7 +10,7 @@ class AuthApiMiddleware(MiddlewareMixin):
     """auth api middleware"""
 
     def process_request(self, request):  # pylint: disable=no-self-use
-        self.skip = Skip
+        self.skip = Skip # pylint: disable=attribute-defined-outside-init
         if self.skip:
             return None
         try:
