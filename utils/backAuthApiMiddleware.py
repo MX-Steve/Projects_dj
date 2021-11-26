@@ -6,7 +6,13 @@ from users.models import User
 
 class AuthApiMiddleware(MiddlewareMixin):
     """auth api middleware"""
-    def process_request(self, request): # pylint: disable=no-self-use
+
+    def __init__(self):
+        self.skip = True
+
+    def process_request(self, request):  # pylint: disable=no-self-use
+        if self.skip:
+            return None
         try:
             path = request.path
             if '/admin' not in path \
@@ -16,7 +22,7 @@ class AuthApiMiddleware(MiddlewareMixin):
                 token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
                 try:
                     user_dict = jwt_decode_handler(token=token)
-                except: # pylint: disable=bare-except
+                except:  # pylint: disable=bare-except
                     return JsonResponse({
                         "code": 10030,
                         "msg": "用户token已过期，需要重新登录",
@@ -34,8 +40,8 @@ class AuthApiMiddleware(MiddlewareMixin):
                 if isAcess == 0:
                     return HttpResponse(status=403)
             return None
-        except: # pylint: disable=bare-except
+        except:  # pylint: disable=bare-except
             return HttpResponse(status=500)
-    
+
     def process_response(self, request, response):
-        return None
+        return response
