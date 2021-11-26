@@ -17,6 +17,7 @@ class AuthApiMiddleware(MiddlewareMixin):
             path = request.path
             if '/admin' not in path \
                     and '/v1/login' not in path \
+                    and '/v1/register' not in path \
                     and '/isAlive' not in path \
                     and request.method != 'GET':
                 token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
