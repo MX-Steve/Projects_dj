@@ -1,5 +1,3 @@
-import imp
-from django import views
 from django.urls import path
 from users.api import auth
 from .views import test

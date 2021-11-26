@@ -1,5 +1,4 @@
 import logging
-from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from utils import baseview
@@ -21,8 +20,8 @@ class LoginView(baseview.AnyLogin):
         if user is not None:
             login(request, user)
             resp = JsonResponse(
-                {"code": 200, 
-                 "data": {"username": user.get_username(), "id": user.id}, 
+                {"code": 200,
+                 "data": {"username": user.get_username(), "id": user.id},
                  "msg": "login success."
                 })
             return resp
