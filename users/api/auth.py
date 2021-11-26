@@ -9,6 +9,7 @@ logger = logging.getLogger("ttool.app")
 
 class LoginView(baseview.AnyLogin):
     "login view"
+
     def post(self, request, args=None):
         email = request.POST.get('username', '')
         password = request.POST.get('password', '')
@@ -19,8 +20,10 @@ class LoginView(baseview.AnyLogin):
             return resp
         return JsonResponse({"code": 401, "data": {}, "msg": 'Unauthorized'})
 
+
 class LogoutView(baseview.AnyLogin):
     "logout view"
-    def post(self,req):
-        logout(req)
+
+    def post(self, request, args=None):
+        logout(request)
         return redirect("/login")

@@ -1,13 +1,12 @@
 from django.utils.deprecation import MiddlewareMixin
-from users.models import *
-from users.serializers import *
-from users.views import *
 from rest_framework_jwt.utils import jwt_decode_handler
 from django.http import HttpResponse, JsonResponse
+from users.models import User
 
 
 class AuthApiMiddleware(MiddlewareMixin):
-    def process_request(self, request):
+    """auth api middleware"""
+    def process_request(self, request): # pylint: disable=no-self-use
         try:
             path = request.path
             if '/admin' not in path \
@@ -17,7 +16,7 @@ class AuthApiMiddleware(MiddlewareMixin):
                 token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
                 try:
                     user_dict = jwt_decode_handler(token=token)
-                except:
+                except: # pylint: disable=bare-except
                     return JsonResponse({
                         "code": 10030,
                         "msg": "用户token已过期，需要重新登录",
@@ -34,5 +33,6 @@ class AuthApiMiddleware(MiddlewareMixin):
                 isAcess = 1
                 if isAcess == 0:
                     return HttpResponse(status=403)
-        except:
+            isAcess = 1
+        except: # pylint: disable=bare-except
             return HttpResponse(status=500)
