@@ -1,6 +1,6 @@
 from django.utils.deprecation import MiddlewareMixin
-from rest_framework_jwt.utils import jwt_decode_handler
 from django.http import HttpResponse, JsonResponse
+from rest_framework_jwt.utils import jwt_decode_handler
 from users.models import User
 
 
@@ -33,6 +33,9 @@ class AuthApiMiddleware(MiddlewareMixin):
                 isAcess = 1
                 if isAcess == 0:
                     return HttpResponse(status=403)
-            isAcess = 1
+            return None
         except: # pylint: disable=bare-except
             return HttpResponse(status=500)
+    
+    def process_response(self, request, response):
+        return None
