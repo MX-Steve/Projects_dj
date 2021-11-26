@@ -13,7 +13,7 @@ You can start the web server using the following command:
 
 ```
 export DJANGO_SETTINGS_MODULE=djentry.settings.development
-export DJANGO_SECRET_KEY=<some secret key>
+export DJANGO_SECRET_KEY='qe187p7jy6w%hrxdly6t=rq%2izaq@owxtefa=sc(gpnialsa!'
 python manage.py runserver
 ```
 

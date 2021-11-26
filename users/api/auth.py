@@ -35,10 +35,11 @@ class LoginView(baseview.AnyLogin):
         return JsonResponse({"code": 404, "data": {}, "msg": 'Unauthorized'})
 
 
-class UserInfoView(baseview.AnyLogin):
+class UserInfoView(baseview.BaseView):
     "user info view"
 
     def get(self, request, args=None):
+        print(request.user)
         # authorization = request.META.get('HTTP_AUTH_KEY')
         # if authorization is not None:
         #     token = authorization.split(' ')[1]
@@ -55,10 +56,11 @@ class UserInfoView(baseview.AnyLogin):
         return JsonResponse({"code": 404, "data": {}, "msg": 'user not exist.'})
 
 
-class LogoutView(baseview.BaseView):
+class LogoutView(baseview.AnyLogin):
     "logout view"
 
     def post(self, request, args=None):
+        print(request.user)
         logout(request)
         return JsonResponse({"code": 200, "data": {}, "msg": 'logout success.'})
 
