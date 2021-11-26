@@ -1,6 +1,5 @@
 import logging
 from django.http import JsonResponse
-from .models import User
 
 logger = logging.getLogger("ttool.app")
 
