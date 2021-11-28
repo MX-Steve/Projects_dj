@@ -55,7 +55,7 @@ class UserInfoView(baseview.BaseView):
         return JsonResponse({"code": 404, "data": {}, "msg": 'user not exist.'})
 
 
-class LogoutView(baseview.AnyLogin):
+class LogoutView(baseview.BaseView):
     "logout view"
 
     def post(self, request, args=None):
