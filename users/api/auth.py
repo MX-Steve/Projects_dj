@@ -39,11 +39,10 @@ class UserInfoView(baseview.BaseView):
     "user info view"
 
     def get(self, request, args=None):
-        print(request.user)
-        # authorization = request.META.get('HTTP_AUTH_KEY')
-        # if authorization is not None:
-        #     token = authorization.split(' ')[1]
-        token = request.GET.get("token")
+        token = ""
+        authorization = request.META.get('HTTP_AUTHORIZATION')
+        if authorization is not None:
+            token = authorization.split(' ')[1]
         if token == "":
             return JsonResponse({"code": 404, "data": {}, "msg": 'need auth-key.'})
         user_dict = jwt_decode_handler(token=token)
