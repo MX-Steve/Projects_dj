@@ -1,6 +1,6 @@
 from django.urls import path
 from users.api import auth
-from .views import test
+from .views import test,grpc_test
 
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('v1/login', auth.LoginView.as_view(), name='login'),
     path('v1/logout', auth.LogoutView.as_view(), name='logout'),
     path('v1/test', test, name='test'),
+    path('v1/grpc-test', grpc_test, name='grpc-test'),
 ]
