@@ -1,8 +1,8 @@
 import json
 import logging
 from django.http import JsonResponse
-from backend.stubs import GetStub
 from google.protobuf.json_format import MessageToJson
+from backend.stubs import GetStub
 from backend.proto.djentry_pb2 import UserInfoRequest
 
 logger = logging.getLogger("ttool.app")
