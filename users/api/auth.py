@@ -2,8 +2,6 @@ import json
 import logging
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from drf_yasg2 import openapi
-from drf_yasg2.utils import swagger_auto_schema
 from rest_framework_jwt.settings import api_settings
 from rest_framework_jwt.utils import jwt_decode_handler
 from utils import baseview
@@ -24,19 +22,6 @@ class LoginView(baseview.AnyLogin):
     get:
         login get view
     '''
-    # @swagger_auto_schema(
-    #     request_body=openapi.Schema(
-    #         type=openapi.TYPE_OBJECT,
-    #         required=['username', 'password'],
-    #         properties={
-    #             'username': openapi.Schema(type=openapi.TYPE_STRING),
-    #             'password': openapi.Schema(type=openapi.TYPE_STRING),
-    #         }
-    #     ),
-    #     responses={200: json.dumps({"code": 200, "msg": "login success", "data": {
-    #                                "username": "lisi", "token": "xxxx...."}}),
-    #                401: json.dumps({"code": 404, "data": {}, "msg": 'Unauthorized'})},
-    # operation_summary='用户登陆接口')
     @swagger_auto_schema2(
         req={"required": ['username', 'password'],
              "params": {"username": 'string', "password": 'string'}},
