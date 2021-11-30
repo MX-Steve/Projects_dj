@@ -11,7 +11,12 @@ logger = logging.getLogger("ttool.app")
 
 
 class LoginView(baseview.AnyLogin):
-    "login view"
+    '''
+    post:
+        login post view
+    get:
+        login get view
+    '''
 
     def post(self, request, args=None):
         data = request.data

@@ -22,9 +22,9 @@ from drf_yasg2 import openapi
 from check import check
 
 openapi_info = openapi.Info(
-        title="模板数据管理服务",
+        title="djentry数据管理服务",
         default_version='v1',
-        description="模板数据管理服务",
+        description="djentry数据管理服务",
         # terms_of_service="https://www.tweet.org",
         contact=openapi.Contact(email="mx_steve@163.com"),
         # license=openapi.License(name="Awesome IP"),
