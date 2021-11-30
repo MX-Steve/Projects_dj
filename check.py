@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
-from rest_framework.response import Response
-# pylint: disable=ungrouped-imports
 from django.db import connection
+from rest_framework.response import Response
 from utils import baseview
 
 

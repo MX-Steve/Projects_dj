@@ -15,11 +15,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-from django.urls import include, path
+from django.urls import include, path, re_path
+from rest_framework import permissions
+from drf_yasg2.views import get_schema_view
+from drf_yasg2 import openapi
 from check import check
 
+openapi_info = openapi.Info(
+        title="模板数据管理服务",
+        default_version='v1',
+        description="模板数据管理服务",
+        # terms_of_service="https://www.tweet.org",
+        contact=openapi.Contact(email="mx_steve@163.com"),
+        # license=openapi.License(name="Awesome IP"),
+    )
+schema_view = get_schema_view(
+    openapi_info,
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
 urlpatterns = [
+    re_path(r'^doc(?P<format>\.json|\.yaml)$',schema_view.without_ui(cache_timeout=0), name='schema-json'),  #<-- 这里
+    path('doc/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),  #<-- 这里
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),  #<-- 这里
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),
-    url(r'isAlive', check.as_view())
+    path('users/', include('users.urls')),
+    url(r'isAlive', check.as_view()),
 ]

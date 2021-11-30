@@ -1,0 +1,247 @@
+swagger: '2.0'
+info:
+  title: "\u6A21\u677F\u6570\u636E\u7BA1\u7406\u670D\u52A1"
+  description: "\u6A21\u677F\u6570\u636E\u7BA1\u7406\u670D\u52A1"
+  contact:
+    email: xxxxx.com
+  version: v1
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /api/users/v1/login:
+    get:
+      operationId: api_users_v1_login_list
+      description: login view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    post:
+      operationId: api_users_v1_login_create
+      description: login view
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - api
+    put:
+      operationId: api_users_v1_login_update
+      description: login view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    delete:
+      operationId: api_users_v1_login_delete
+      description: login view
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters: []
+  /api/users/v1/logout:
+    get:
+      operationId: api_users_v1_logout_list
+      description: logout view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    post:
+      operationId: api_users_v1_logout_create
+      description: logout view
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - api
+    put:
+      operationId: api_users_v1_logout_update
+      description: logout view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    delete:
+      operationId: api_users_v1_logout_delete
+      description: logout view
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters: []
+  /api/users/v1/refresh:
+    get:
+      operationId: api_users_v1_refresh_list
+      description: refresh token view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    post:
+      operationId: api_users_v1_refresh_create
+      description: refresh token view
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - api
+    put:
+      operationId: api_users_v1_refresh_update
+      description: refresh token view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    delete:
+      operationId: api_users_v1_refresh_delete
+      description: refresh token view
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters: []
+  /api/users/v1/register:
+    get:
+      operationId: api_users_v1_register_list
+      description: register user view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    post:
+      operationId: api_users_v1_register_create
+      description: register user view
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - api
+    put:
+      operationId: api_users_v1_register_update
+      description: register user view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    delete:
+      operationId: api_users_v1_register_delete
+      description: register user view
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters: []
+  /api/users/v1/userinfo:
+    get:
+      operationId: api_users_v1_userinfo_list
+      description: user info view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    post:
+      operationId: api_users_v1_userinfo_create
+      description: user info view
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - api
+    put:
+      operationId: api_users_v1_userinfo_update
+      description: user info view
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - api
+    delete:
+      operationId: api_users_v1_userinfo_delete
+      description: user info view
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters: []
+  /isAlive:
+    get:
+      operationId: isAlive_list
+      description: check the app status
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - isAlive
+    post:
+      operationId: isAlive_create
+      description: check the app status
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - isAlive
+    put:
+      operationId: isAlive_update
+      description: check the app status
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - isAlive
+    delete:
+      operationId: isAlive_delete
+      description: check the app status
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - isAlive
+    parameters: []
+definitions: {}

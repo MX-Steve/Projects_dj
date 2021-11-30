@@ -29,9 +29,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg2',
     'backend',
     'users',
 ]
+
+SWAGGER_SETTINGS = {
+	'DEFAULT_INFO': 'djentry.urls.openapi_info' # 这个是url配置文件中的openapi对象，就是下面这个
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,6 +106,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [ 
+    os.path.join(BASE_DIR, "statics"), 
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
