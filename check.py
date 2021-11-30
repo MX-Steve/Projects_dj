@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.http import JsonResponse
 from django.db import connection
+from drf_yasg2.utils import swagger_auto_schema
 from utils import baseview
 from utils.util import no_method_decorator
 
@@ -14,7 +15,7 @@ class check(baseview.AnyLogin):
     get:
        check the app status 
     """
-
+    @swagger_auto_schema(responses={200: "查看项目是否上线:online"})
     def get(self, request, args=None):
         try:
             sql = "show tables;"

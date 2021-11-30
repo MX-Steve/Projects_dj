@@ -1,15 +1,22 @@
+import json
 import logging
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from drf_yasg2 import openapi
+from drf_yasg2.utils import swagger_auto_schema
 from rest_framework_jwt.settings import api_settings
 from rest_framework_jwt.utils import jwt_decode_handler
 from utils import baseview
+from utils.util import no_method_decorator, swagger_auto_schema2
 from users.models import User
 from users.serializers import UserSerializers
 
 logger = logging.getLogger("ttool.app")
 
 
+@no_method_decorator("get")
+@no_method_decorator("put")
+@no_method_decorator("delete")
 class LoginView(baseview.AnyLogin):
     '''
     post:
@@ -17,7 +24,25 @@ class LoginView(baseview.AnyLogin):
     get:
         login get view
     '''
-
+    # @swagger_auto_schema(
+    #     request_body=openapi.Schema(
+    #         type=openapi.TYPE_OBJECT,
+    #         required=['username', 'password'],
+    #         properties={
+    #             'username': openapi.Schema(type=openapi.TYPE_STRING),
+    #             'password': openapi.Schema(type=openapi.TYPE_STRING),
+    #         }
+    #     ),
+    #     responses={200: json.dumps({"code": 200, "msg": "login success", "data": {
+    #                                "username": "lisi", "token": "xxxx...."}}),
+    #                401: json.dumps({"code": 404, "data": {}, "msg": 'Unauthorized'})},
+    # operation_summary='用户登陆接口')
+    @swagger_auto_schema2(
+        req={"required": ['username', 'password'],
+             "params": {"username": 'string', "password": 'string'}},
+        info="登陆接口",
+        res={200: json.dumps({"code": 200, "msg": "login success", "data": {
+            "username": "lisi", "token": "xxxx...."}})})
     def post(self, request, args=None):
         data = request.data
         if "username" not in data or "password" not in data:
@@ -40,6 +65,9 @@ class LoginView(baseview.AnyLogin):
         return JsonResponse({"code": 404, "data": {}, "msg": 'Unauthorized'})
 
 
+@no_method_decorator("post")
+@no_method_decorator("put")
+@no_method_decorator("delete")
 class UserInfoView(baseview.BaseView):
     "user info view"
 
@@ -60,6 +88,9 @@ class UserInfoView(baseview.BaseView):
         return JsonResponse({"code": 404, "data": {}, "msg": 'user not exist.'})
 
 
+@no_method_decorator("get")
+@no_method_decorator("put")
+@no_method_decorator("delete")
 class LogoutView(baseview.BaseView):
     "logout view"
 
@@ -69,6 +100,9 @@ class LogoutView(baseview.BaseView):
         return JsonResponse({"code": 200, "data": {}, "msg": 'logout success.'})
 
 
+@no_method_decorator("get")
+@no_method_decorator("put")
+@no_method_decorator("delete")
 class RegisterView(baseview.AnyLogin):
     "register user view"
 
@@ -85,6 +119,9 @@ class RegisterView(baseview.AnyLogin):
         return JsonResponse({"code": 200, "data": {}, "msg": 'register success.'})
 
 
+@no_method_decorator("get")
+@no_method_decorator("put")
+@no_method_decorator("delete")
 class RefreshTokenView(baseview.BaseView):
     """refresh token view"""
 
